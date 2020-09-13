@@ -8,6 +8,7 @@ const homeRoutes = require("./routes/home"),
   addRoutes = require("./routes/add"),
   coursesRoutes = require("./routes/courses");
   cardRoutes = require("./routes/card");
+  ordersRoutes = require('./routes/orders')
 const User = require('./models/user')
 
 const app = express();
@@ -39,11 +40,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", homeRoutes);
+
 app.use("/add", addRoutes);
 
 app.use("/courses", coursesRoutes);
 
 app.use("/card", cardRoutes);
+
+app.use('/orders', ordersRoutes)
 
 async function start() {
   try {
